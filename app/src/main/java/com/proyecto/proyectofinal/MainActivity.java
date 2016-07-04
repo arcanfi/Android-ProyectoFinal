@@ -35,6 +35,11 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Facebook Login Área
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
+
         setContentView(R.layout.activity_main);
 
         //AdView Área
@@ -42,9 +47,6 @@ public class MainActivity extends ActionBarActivity {
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         adView.loadAd(adRequest);
 
-        //Facebook Login Área
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
         callbackManager = CallbackManager.Factory.create();
         getFbKeyHash("YTzWk0lX3r5l5hydFZZxKu5U+C4=");
         loginButton = (LoginButton)findViewById(R.id.login_facebook);
