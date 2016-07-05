@@ -20,7 +20,6 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
 import java.security.MessageDigest;
@@ -38,7 +37,9 @@ public class MainActivity extends ActionBarActivity {
 
         //Facebook Login Área
         FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+        //AppEventsLogger.activateApp(this);
+        callbackManager = CallbackManager.Factory.create();
+        getFbKeyHash("YTzWk0lX3r5l5hydFZZxKu5U+C4=");
 
         setContentView(R.layout.activity_main);
 
@@ -47,8 +48,6 @@ public class MainActivity extends ActionBarActivity {
         AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         adView.loadAd(adRequest);
 
-        callbackManager = CallbackManager.Factory.create();
-        getFbKeyHash("YTzWk0lX3r5l5hydFZZxKu5U+C4=");
         loginButton = (LoginButton)findViewById(R.id.login_facebook);
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
